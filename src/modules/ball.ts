@@ -20,8 +20,9 @@ export class Ball {
     this.size = size;
     this.xSpeed = random(-3, 3);
     this.ySpeed = random(-3, 3);
-    this.color = color;
+    this.color = "rgb(" + Math.floor(random(0, 256)) + "," + Math.floor(random(0, 256)) + "," + Math.floor(random(0, 256)) + ")";
     this.borderColor = borderColor;
+
 
 
 
@@ -43,7 +44,8 @@ export class Ball {
 
 
   public draw(): void {
-    fill(Ball.load);
+    // image(this.img, 0, 0, 20, 20)
+    fill(this.color)
     stroke(this.borderColor);
     ellipse(this.x, this.y, this.size);
   }
@@ -63,6 +65,10 @@ export class Ball {
   public touchingMouse(): boolean {
     return this.distFromMouse() < this.size / 2;
   }
+  public setColor(c: string) {
+    this.color = c;
+  }
+
 
   /* This border behavior implements a bounce */
   private doBorderBehavior() {

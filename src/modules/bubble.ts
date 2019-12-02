@@ -44,6 +44,8 @@ export class Bubble {
             this.y = this.ySpeed + this.y;
             this.doBorderBehavior();
         }
+
+
     }
 
     public distFromMouse(): number {
