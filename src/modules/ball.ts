@@ -1,16 +1,32 @@
+import { Image } from "p5";
 
 export class Ball {
   private x: number;
   private y: number;
   private size: number;
-  private xSpeed: number = random(-3, 3);
-  private ySpeed: number = random(-3, 3);
+  private xSpeed: number;
+  private ySpeed: number;
   private stopped: boolean = false;
-  private color: string = "red";
-  private borderColor: string = "black";
+  private color: string;
+  private borderColor: string;
+  private static img: p5.Image;
+
+
 
   /* TODO REQUIRED - add accessors and mutators for x, y, size, color, and borderColor */
-  constructor(x: number, y: number, size: number) {
+  constructor(x: number, y: number, size: number, color: string = "red", borderColor: string = "black") {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.xSpeed = random(-3, 3);
+    this.ySpeed = random(-3, 3);
+    this.color = "rgb(" + Math.floor(random(0, 256)) + "," + Math.floor(random(0, 256)) + "," + Math.floor(random(0, 256)) + ")";
+    this.borderColor = borderColor;
+
+
+
+
+
     /* TODO REQUIRED = Build your constructor */
     /* TODO OPTIONAL - add optional parameters to set color and borderColor on creation of the object */
   }
@@ -22,9 +38,14 @@ export class Ball {
   public go() {
     this.stopped = false;
   }
+  public static load() {
+    Ball.img = loadImage('assets/11-Metapod.png')
+  }
+
 
   public draw(): void {
-    fill(this.color);
+    // image(this.img, 0, 0, 20, 20)
+    fill(this.color)
     stroke(this.borderColor);
     ellipse(this.x, this.y, this.size);
   }
@@ -44,6 +65,10 @@ export class Ball {
   public touchingMouse(): boolean {
     return this.distFromMouse() < this.size / 2;
   }
+  public setColor(c: string) {
+    this.color = c;
+  }
+
 
   /* This border behavior implements a bounce */
   private doBorderBehavior() {
