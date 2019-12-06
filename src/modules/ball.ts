@@ -47,7 +47,7 @@ export class Ball {
     // image(this.img, 0, 0, 20, 20)
     fill(this.color)
     stroke(this.borderColor);
-    ellipse(this.x, this.y, this.size);
+    image(Ball.img, this.x, this.y, this.size, this.size);
   }
 
   public move(): void {
