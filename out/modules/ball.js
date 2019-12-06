@@ -21,7 +21,7 @@ export class Ball {
     draw() {
         fill(this.color);
         stroke(this.borderColor);
-        ellipse(this.x, this.y, this.size);
+        image(Ball.img, this.x, this.y, this.size, this.size);
     }
     move() {
         if (this.stopped == false) {

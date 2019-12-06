@@ -10,6 +10,7 @@ function setup() {
     let numBubbles = 10;
     let numBalls = 10;
     let numFlakes = 10;
+    Ball.load();
     createCanvas(500, 500);
     for (let i = 0; i < numBalls; i++) {
         balls[i] = new Ball(random(25, width - 25), random(25, height - 25), random(10, 50));
